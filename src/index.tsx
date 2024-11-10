@@ -35,7 +35,6 @@ const App = () => {
 	// Обработчик сброса формы
 	const cbReset = () => setFormState(defaultArticleState);
 
-	// Определение стилей
 	const styleProps: CustomCSSProperties = {
 		'--font-family': formState.fontFamilyOption.value,
 		'--font-size': formState.fontSizeOption.value,
