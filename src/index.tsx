@@ -10,6 +10,7 @@ import {
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
 
+
 // Интерфейс для пользовательских CSS-переменных
 interface CustomCSSProperties extends CSSProperties {
 	'--font-family'?: string;
