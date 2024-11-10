@@ -9,6 +9,7 @@ type PropsArticle = {
 	onClick?: OnClick; // Опциональная функция для обработки клика
 };
 
+
 export const Article = (props: PropsArticle) => {
 	return (
 		<article onClick={props.onClick} className={clsx(styles.article)}>
