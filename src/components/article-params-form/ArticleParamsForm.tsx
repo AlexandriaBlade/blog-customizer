@@ -21,7 +21,7 @@ import { RadioGroup } from '../radio-group';
 type PropsArticleParamsForm = {
 	onSubmit?: (params: ArticleStateType) => void;
 	onReset?: (params: ArticleStateType) => void;
-	onToggle?: (isOpen: boolean) => void; // Изменил тип на более осмысленный
+	onToggle?: (isOpen: boolean) => void; // Изменила тип на более осмысленный
 	formOp: boolean;
 };
 
