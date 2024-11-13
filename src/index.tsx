@@ -26,7 +26,10 @@ const App = () => {
 
 	return (
 		<div className={clsx(styles.main)}>
-			<ArticleParamsForm formOp={formOpen} onToggle={toggler} />
+			<ArticleParamsForm
+				onToggle={toggler}
+				formOp={formOpen}
+			/>
 			<Article onClick={() => setFormOpen(false)} />
 		</div>
 	);
