@@ -21,20 +21,14 @@ import { RadioGroup } from '../radio-group';
 type PropsArticleParamsForm = {
 	onSubmit?: (params: ArticleStateType) => void;
 	onReset?: (params: ArticleStateType) => void;
-	onToggle?: (isOpen: boolean) => void; // Изменила тип на более осмысленный
+	onToggle?: (isOpen: boolean) => void;
 	formOp: boolean;
 };
 
 export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
-	const { onSubmit, onReset, onToggle, formOp } = props;
+	const { onToggle, formOp } = props;
 
-	const [params, setParams] = useState({
-		fontFamilyOption: fontFamilyOptions[0],
-		fontColor: fontColors[0],
-		backgroundColor: backgroundColors[0],
-		contentWidth: contentWidthArr[0],
-		fontSizeOption: fontSizeOptions[0],
-	});
+	const [params, setParams] = useState(defaultArticleState);
 
 	useEffect(() => {
 		const handlerOpenWidget = (event: KeyboardEvent) => {
@@ -45,7 +39,7 @@ export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
 	}, [formOp, onToggle]);
 
 	const toggler = () => {
-		onToggle?.(!formOp); // Теперь переключает состояние
+		onToggle?.(!formOp);
 	};
 
 	const cbFonts = (option: OptionType) => {
@@ -85,12 +79,12 @@ export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
 
 	const submitParams = (e: React.FormEvent) => {
 		e.preventDefault();
-		onSubmit?.(params);
+		props.onSubmit?.(params);
 	};
 
 	const resetStyles = () => {
 		setParams(defaultArticleState);
-		onReset?.(defaultArticleState);
+		props.onReset?.(defaultArticleState);
 	};
 
 	const sidebarStyle = clsx({
