@@ -9,6 +9,7 @@ export type PropsArrowButton = {
 	isOpen: boolean; // Состояние, открыто ли меню
 };
 
+
 export const ArrowButton = ({ onClick, isOpen }: PropsArrowButton) => {
 	return (
 		<div
