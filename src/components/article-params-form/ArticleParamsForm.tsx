@@ -26,14 +26,17 @@ type PropsArticleParamsForm = {
 };
 
 export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
-	const { onToggle, formOp } = props;
+	const { onSubmit, onReset, onToggle, formOp } = props;
 
 	const [params, setParams] = useState(defaultArticleState);
 
 	useEffect(() => {
+		if (!formOp) return; // Останавливаем эффект, если форма закрыта
+
 		const handlerOpenWidget = (event: KeyboardEvent) => {
-			if (event.key === 'Escape' && formOp) onToggle?.(false);
+			if (event.key === 'Escape') onToggle?.(false);
 		};
+
 		document.addEventListener('keydown', handlerOpenWidget);
 		return () => document.removeEventListener('keydown', handlerOpenWidget);
 	}, [formOp, onToggle]);
@@ -79,12 +82,12 @@ export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
 
 	const submitParams = (e: React.FormEvent) => {
 		e.preventDefault();
-		props.onSubmit?.(params);
+		onSubmit?.(params);
 	};
 
 	const resetStyles = () => {
 		setParams(defaultArticleState);
-		props.onReset?.(defaultArticleState);
+		onReset?.(defaultArticleState);
 	};
 
 	const sidebarStyle = clsx({
