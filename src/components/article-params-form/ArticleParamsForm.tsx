@@ -28,6 +28,7 @@ type PropsArticleParamsForm = {
 export const ArticleParamsForm = (props: PropsArticleParamsForm) => {
 	const { onSubmit, onReset, onToggle, formOp } = props;
 
+	// Перемещаем состояние формы сюда
 	const [params, setParams] = useState(defaultArticleState);
 
 	useEffect(() => {
