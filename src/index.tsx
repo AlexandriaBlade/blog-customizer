@@ -3,6 +3,10 @@ import { StrictMode, CSSProperties, useState } from 'react';
 import clsx from 'clsx';
 import { Article } from './components/article/Article';
 import { ArticleParamsForm } from './components/article-params-form/ArticleParamsForm';
+import {
+	ArticleStateType,
+	defaultArticleState,
+} from './constants/articleProps';
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
 
@@ -24,8 +28,12 @@ const App = () => {
 	// Переключатель для открытия/закрытия формы
 	const toggler = () => setFormOpen((prev) => !prev);
 
+	const styleProps: CustomCSSProperties = {
+		// Здесь можно оставить только те стили, которые необходимы для отображения статьи
+	};
+
 	return (
-		<div className={clsx(styles.main)}>
+		<div className={clsx(styles.main)} style={styleProps}>
 			<ArticleParamsForm
 				onToggle={toggler}
 				formOp={formOpen}
